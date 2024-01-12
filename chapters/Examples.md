@@ -2,7 +2,7 @@
 
 ## Supported Tokens
 
-Let's see the supported tokens [file](./src/supportedTokens.ts) under the src folder.
+Let's see the supported tokens [file](/src/supportedTokens.ts) under the src folder.<br>
 That script connect with fibrous router and get the informations about tokens.
 
 Script is written with typescript (ts format), it needs to be converted to js format.
@@ -19,35 +19,35 @@ If you don't have tsc, just install it with npm.
 npm install -g typescript
 ```
 
-After converting ts file to js file, you can see in src folder a new json file as **supportedTokens.js**.
+After converting ts file to js file, you can see in src folder a new js file as **supportedTokens.js**.<br>
 Let's see which tokens we are getting...
 ```bash
 node supportedTokens.js
 ```
 
-As a result you can see bunch of tokens like below:
-.
-.
-.
-usdc: {
-  address: '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8',
-  name: 'usd-coin',
-  symbol: 'usdc',
-  decimals: 6,
-  price: '1.001',
-  imageUrl: 'https://assets.coingecko.com/coins/images/6319/small/usdc.png?1696506694',
-  valuable: true,
-  verified: true
-},
-.
-.
-.
+As a result you can see bunch of tokens like below:<br>
+.<br>
+.<br>
+.<br>
+usdc: {<br>
+  address: '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8',<br>
+  name: 'usd-coin',<br>
+  symbol: 'usdc',<br>
+  decimals: 6,<br>
+  price: '1.001',<br>
+  imageUrl: 'https://assets.coingecko.com/coins/images/6319/small/usdc.png?1696506694',<br>
+  valuable: true,<br>
+  verified: true<br>
+},<br>
+.<br>
+.<br>
+.<br>
 
 ---
 
 ## Route
 
-Let's have a look the route [file](./src/route.ts) between eth - usdc.
+Let's have a look the route [file](/src/route.ts) between eth - usdc.<br>
 Again we need to convert our ts file to js file.
 ```bash
 tsc route.ts
@@ -58,46 +58,45 @@ After creating the js file...
 node route.js
 ```
 
-As a result we get the best route from sdk like below:
-
-route {
-  success: true,
-  inputToken: {
-    address: '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',
-    decimals: 18,
-    isBase: false,
-    isNative: true,
-    name: 'Ether',
-    symbol: 'eth',
-    price: 2252.25,
-    verified: true
-  },
-  inputAmount: '1000000000000000000',
-  outputToken: {
-    address: '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8',
-    decimals: 6,
-    isBase: false,
-    isNative: false,
-    name: 'usd-coin',
-    symbol: 'usdc',
-    price: 1,
-    verified: true,
-    reserve: { type: 'BigNumber', hex: '0x018204c71cd5' }
-  },
-  outputAmount: '2249562970',
-  time: 0.366,
-  estimatedGasUsed: '0',
-  route: [ { percent: '100%', swaps: [Array] } ],
-  bestQuotesByProtocols: [
-    '0',
-    '2237008599',
-    '0',
-    '0',
-    '2249562970',
-    '2249574509',
-    '2182044320'
-  ]
-}
+As a result we get the best route from sdk like below:<br>
+route {<br>
+  success: true,<br>
+  inputToken: {<br>
+    address: '0x049d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7',<br>
+    decimals: 18,<br>
+    isBase: false,<br>
+    isNative: true,<br>
+    name: 'Ether',<br>
+    symbol: 'eth',<br>
+    price: 2252.25,<br>
+    verified: true<br>
+  },<br>
+  inputAmount: '1000000000000000000',<br>
+  outputToken: {<br>
+    address: '0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8',<br>
+    decimals: 6,<br>
+    isBase: false,<br>
+    isNative: false,<br>
+    name: 'usd-coin',<br>
+    symbol: 'usdc',<br>
+    price: 1,<br>
+    verified: true,<br>
+    reserve: { type: 'BigNumber', hex: '0x018204c71cd5' }<br>
+  },<br>
+  outputAmount: '2249562970',<br>
+  time: 0.366,<br>
+  estimatedGasUsed: '0',<br>
+  route: [ { percent: '100%', swaps: [Array] } ],<br>
+  bestQuotesByProtocols: [<br>
+    '0',<br>
+    '2237008599',<br>
+    '0',<br>
+    '0',<br>
+    '2249562970',<br>
+    '2249574509',<br>
+    '2182044320'<br>
+  ]<br>
+}<br>
 
 ---
 
@@ -127,4 +126,4 @@ node route.js
 
 ---
 
-For [Account](./chapters/Account.md) instructions, please refer to the next step.
+For [Account](/chapters/Account.md) instructions, please refer to the next step.
