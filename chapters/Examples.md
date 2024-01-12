@@ -127,4 +127,4 @@ node route.js
 
 ---
 
-For [Account](./chapters/3.%Account.md) instructions, please refer to the next step.
+For [Account](./chapters/Account.md) instructions, please refer to the next step.

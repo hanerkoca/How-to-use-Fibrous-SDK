@@ -77,4 +77,4 @@ dai, Amount of: 0 USD
 
 ---
 
-For an example of [Fibrous Bot](./chapters/4.%An%example%of%Fibrous%Bot.md), please refer to the next step.
+For an example of [Fibrous Bot](./chapters/Fibrous%Bot.md), please refer to the next step.

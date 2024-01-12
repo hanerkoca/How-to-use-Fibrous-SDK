@@ -37,4 +37,4 @@ cd src
 
 ---
 
-For the [Examples](./chapters/2.%Examples.md), please refer to the next step.
+For the [Examples](./chapters/Examples.md), please refer to the next step.
