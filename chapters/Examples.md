@@ -26,6 +26,7 @@ node supportedTokens.js
 ```
 
 As a result you can see bunch of tokens like below:<br>
+
 .<br>
 .<br>
 .<br>
@@ -53,12 +54,13 @@ Again we need to convert our ts file to js file.
 tsc route.ts
 ```
 
-After creating the js file...
+After creating the js file, run it...
 ```bash
 node route.js
 ```
 
 As a result we get the best route from sdk like below:<br>
+
 route {<br>
   success: true,<br>
   inputToken: {<br>
