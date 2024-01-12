@@ -29,11 +29,11 @@ Install the **starknet** library with using terminal...
 npm install starknet
 ```
 
-For script files create a folder...
+For script files go to src folder...
 ```bash
 cd src
 ```
 
 ---
 
-For the [Examples](./src/Examples.md), please refer to the next step.
+For the [Examples](/src/Examples.md), please refer to the next step.
