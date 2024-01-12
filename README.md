@@ -9,7 +9,7 @@ An Automated Market Maker (AMM) is a type of decentralized finance (DeFi) protoc
 
 ---
 
-# How can we use Fibrous SDK
+# How to use Fibrous SDK
 
 Firstly we will setup the enviroment for usage of fibrous-sdk and we will check some examples from main repo and understand how it works.
 
