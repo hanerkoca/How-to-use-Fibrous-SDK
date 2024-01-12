@@ -2,7 +2,7 @@
 
 ## Getting existing account
 
-The Account [file](/src/Account.ts) under the src folder is for getting the existing account.<br>
+The Account [file](/src/account.ts) under the src folder is for getting the existing account.<br>
 For that we need **RPC Provider**, **Public Key** and **Private Key** from our accounts.
 
 For Provider to use there are 2 options, first one is from starknet library.<br>
@@ -77,4 +77,4 @@ dai, Amount of: 0 USD
 
 ---
 
-For an example of [Fibrous Bot](/chapters/Fibrous%Bot.md), please refer to the next step.
+For an example of [Fibrous Bot](/chapters/Fibrous%20Bot.md), please refer to the next step.

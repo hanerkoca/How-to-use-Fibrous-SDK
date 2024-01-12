@@ -1,12 +1,12 @@
 # Fibrous Bot
 
-The Fibrous Bot [File](./src/runBot.ts) under the src folder.
-For that is required;
+The Fibrous Bot [File](/src/runBot.ts) under the src folder.<br>
+For that is required;<br>
 **RPC Provider**, **Public Key** and **Private Key** again.
 
 And also some files are required;
-- erc20ETH.json [File](./compiledContract/erc20ETH.json) for the tokens contract and abi.
-- formatBalance.ts [File](./src/formatBalance.ts) to finding correct token decimals for account balance.
+- erc20ETH.json [File](/compiledContract/erc20ETH.json) for the tokens contract and abi.
+- formatBalance.ts [File](/src/formatBalance.ts) to finding correct token decimals for account balance.
 
 Script is written with typescript (ts format), it needs to be converted to js format.
 ```bash
