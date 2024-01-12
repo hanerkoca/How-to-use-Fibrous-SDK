@@ -40,16 +40,16 @@ That script runs the runBot.js file every 30 seconds, save it and exit from edit
 Results will be like below:
 
 Getting token prices...<br>
-Max. token in account: eth, Amount of: 343.2087496974167 USD<br>
+Max. token in account: eth, Amount of: 143.2087496974167 USD<br>
 Best Token: usdc with Profit/Loss: -1.35942<br>
 Swap does not make sense. Profit/Loss is not positive.
 
 or
 
 Getting token prices...<br>
-Max. token in account: eth, Amount of: 357.5716066121188 USD<br>
+Max. token in account: eth, Amount of: 157.5716066121188 USD<br>
 Best Token: USDT with Profit/Loss: 0.612732<br>
-0.1212819758317154 Amount of eth swapping to USDT. (Slippage is: 0.005)<br>
+0.0512819758317154 Amount of eth swapping to USDT. (Slippage is: 0.005)<br>
 TX HASH: 0x1904b456b573e480c25afd8bba476e94037fe6f36899bc9e116b9212a709078
 
 For deactivating the crontab job with terminal:
