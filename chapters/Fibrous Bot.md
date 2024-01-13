@@ -50,7 +50,7 @@ Getting token prices...<br>
 Max. token in account: eth, Amount of: 157.5716066121188 USD<br>
 Best Token: USDT with Profit/Loss: 0.612732<br>
 0.0512819758317154 Amount of eth swapping to USDT. (Slippage is: 0.005)<br>
-TX HASH: 0x1904b456b573e480c25afd8bba476e94037fe6f36899bc9e116b9212a709078
+TX HASH: TX_HASH
 
 For deactivating the crontab job with terminal:
 ```bash
