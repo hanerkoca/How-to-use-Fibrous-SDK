@@ -20,6 +20,7 @@ const provider = new RpcProvider({ nodeUrl: "https://starknet-mainnet.infura.io/
 You can create an account on [Infura](https://app.infura.io/) and create a new API Key.<br>
 After that you can choose which Endpoint you use, in that case you can choose just Starknet Mainnet.<br>
 Note: For free accounts, up to 100.000 requests are allowed daily.
+Recommend: It is better to use RpcProvider with free Infura account instead of Starknet's default provider "constants.NetworkName.SN_MAIN".
 
 ---
 

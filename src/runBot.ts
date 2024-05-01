@@ -15,9 +15,10 @@ async function get_token_price() {
     const usdc_price = token_prices.usdc.price;
     const USDT_price = token_prices.USDT.price;
     const dai_price = token_prices.dai.price;
+    const strk_price = token_prices.STRK.price;
     
     console.log("Getting token prices...");
-    return { eth_price, usdc_price, USDT_price, dai_price };
+    return { eth_price, usdc_price, USDT_price, dai_price, strk_price };
 };
 
 async function getTokenBalance(account: any, tokenContract: any, decimals: number) {
@@ -68,12 +69,13 @@ async function accountBalance() {
     const usdcAddress = "0x053c91253bc9682c04929ca02ed00b3e423f6710d2ee7e0d5ebb06f3ecf368a8";
     const usdtAddress = "0x068f5c6a61780768455de69077e07e89787839bf8166decfbf92b645209c0fb8";
     const daiAddress = "0x00da114221cb83fa859dbdb4c44beeaa0bb37c7537ad5ae66fe5e0efd20e6eb3";
+    const strkAddress = "0x04718f5a0fc34cc1af16a1cdee98ffb20c31f5cd61d6ab07201858f4287c938d";
 
     const fs = require('fs');
 
     const compiledERC20 = json.parse(fs.readFileSync('./compiledContract/erc20ETH.json').toString("ascii")).abi;
 
-    const { eth_price, usdc_price, USDT_price, dai_price } = await get_token_price();
+    const { eth_price, usdc_price, USDT_price, dai_price, strk_price } = await get_token_price();
 
     // Token list
     const token_list = [
@@ -81,6 +83,7 @@ async function accountBalance() {
         { symbol: "usdc", address: usdcAddress, abi: compiledERC20, decimals: await new Contract(compiledERC20, usdcAddress, account).decimals(), usd_price: usdc_price },
         { symbol: "USDT", address: usdtAddress, abi: compiledERC20, decimals: await new Contract(compiledERC20, usdtAddress, account).decimals(), usd_price: USDT_price },
         { symbol: "dai", address: daiAddress, abi: compiledERC20, decimals: await new Contract(compiledERC20, daiAddress, account).decimals(), usd_price: dai_price },
+        { symbol: "STRK", address: strkAddress, abi: compiledERC20, decimals: await new Contract(compiledERC20, strkAddress, account).decimals(), usd_price: strk_price },    
     ];
 
     const { maxToken, maxBalance, maxBalance_usd } = await findTokenWithMaxBalance(account, token_list);
@@ -107,6 +110,7 @@ async function main(
     // Get the supported tokens from FibrousRouter
     const tokens = await fibrous.supportedTokens();
     const eth_price = tokens.eth.price;
+    const strk_price = tokens.STRK.price;
     const tokenInAddress = tokens[tokenSymbolIn.toString()].address;
     const tokenOutAddress = tokens[tokenSymbolOut.toString()].address;
     const tokenInDecimals = tokens[tokenSymbolIn.toString()].decimals;
@@ -161,40 +165,88 @@ async function main(
     );
 
     // Calculate the profit-loss
-    if (tokenSymbolIn==="eth") {
+    if(tokenSymbolIn==="eth" && tokenSymbolOut==="STRK") {
+        const routeResult = (output_amount*strk_price)-(input_amount*eth_price);
+
+        // Calculate the estimate fee for swap
+        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const gas_fee = Number(estimateFee.overall_fee)/1e18;
+        const overall_fee = (gas_fee*eth_price/45);
+        const profit_loss = (routeResult-overall_fee);
+        const profit_loss_adj = parseFloat(profit_loss.toFixed(6));
+
+        return (profit_loss_adj);
+
+    } else if(tokenSymbolIn==="STRK" && tokenSymbolOut==="eth") {
+        const routeResult = (output_amount*eth_price)-(input_amount*strk_price);
+
+        // Calculate the estimate fee for swap
+        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const gas_fee = Number(estimateFee.overall_fee)/1e18;
+        const overall_fee = (gas_fee*eth_price/45);
+        const profit_loss = (routeResult-overall_fee);
+        const profit_loss_adj = parseFloat(profit_loss.toFixed(6));
+
+        return (profit_loss_adj);
+    
+    } else if(tokenSymbolIn==="eth") {
         const routeResult = (output_amount)-(input_amount*eth_price);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
-        const overall_fee = (gas_fee*eth_price);
+        const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
         const profit_loss_adj = parseFloat(profit_loss.toFixed(6));
-        
+
         return (profit_loss_adj);
 
     } else if(tokenSymbolOut==="eth") {
         const routeResult = (output_amount*eth_price)-(input_amount);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
-        const overall_fee = (gas_fee*eth_price);
+        const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
         const profit_loss_adj = parseFloat(profit_loss.toFixed(6));
-        
+
+        return (profit_loss_adj);
+
+    } else if(tokenSymbolIn==="STRK") {
+        const routeResult = (output_amount)-(input_amount*strk_price);
+
+        // Calculate the estimate fee for swap
+        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const gas_fee = Number(estimateFee.overall_fee)/1e18;
+        const overall_fee = (gas_fee*eth_price/45);
+        const profit_loss = (routeResult-overall_fee);
+        const profit_loss_adj = parseFloat(profit_loss.toFixed(6));
+
+        return (profit_loss_adj);
+
+    } else if(tokenSymbolOut==="STRK") {
+        const routeResult = (output_amount*strk_price)-(input_amount);
+
+        // Calculate the estimate fee for swap
+        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const gas_fee = Number(estimateFee.overall_fee)/1e18;
+        const overall_fee = (gas_fee*eth_price/45);
+        const profit_loss = (routeResult-overall_fee);
+        const profit_loss_adj = parseFloat(profit_loss.toFixed(6));
+
         return (profit_loss_adj);
 
     } else {
         const routeResult = (output_amount-input_amount);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
-        const overall_fee = (gas_fee*eth_price);
+        const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
         const profit_loss_adj = parseFloat(profit_loss.toFixed(6));
-        
+
         return profit_loss_adj;
     }
 };
@@ -205,7 +257,7 @@ async function findbest(
     myslippage: number,
 ) {
     // Tokens to check
-    const tokensToCheck = ["eth", "usdc", "USDT", "dai"];
+    const tokensToCheck = ["eth", "usdc", "USDT", "dai", "STRK"]; // If you have problem with "dai", you can just remove it from the list.
 
     const promises = tokensToCheck
     .filter(token => token !== mytoken)
