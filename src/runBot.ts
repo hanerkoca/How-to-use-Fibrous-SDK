@@ -169,7 +169,7 @@ async function main(
         const routeResult = (output_amount*strk_price)-(input_amount*eth_price);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
         const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
@@ -181,7 +181,7 @@ async function main(
         const routeResult = (output_amount*eth_price)-(input_amount*strk_price);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
         const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
@@ -193,7 +193,7 @@ async function main(
         const routeResult = (output_amount)-(input_amount*eth_price);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
         const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
@@ -205,7 +205,7 @@ async function main(
         const routeResult = (output_amount*eth_price)-(input_amount);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
         const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
@@ -217,7 +217,7 @@ async function main(
         const routeResult = (output_amount)-(input_amount*strk_price);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
         const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
@@ -229,7 +229,7 @@ async function main(
         const routeResult = (output_amount*strk_price)-(input_amount);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
         const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
@@ -241,7 +241,7 @@ async function main(
         const routeResult = (output_amount-input_amount);
 
         // Calculate the estimate fee for swap
-        const estimateFee = await account0.estimateFee([approveCall, swapCall]);
+        const estimateFee = await account.estimateFee([approveCall, swapCall]);
         const gas_fee = Number(estimateFee.overall_fee)/1e18;
         const overall_fee = (gas_fee*eth_price/45);
         const profit_loss = (routeResult-overall_fee);
