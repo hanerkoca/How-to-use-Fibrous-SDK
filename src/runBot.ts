@@ -2,6 +2,7 @@
 import { Router as FibrousRouter } from "fibrous-router-sdk";
 import { Account, RpcProvider, Call, json, Contract, uint256, constants } from "starknet";
 import { parseUnits, formatUnits } from "ethers";
+import { Decimal } from 'decimal.js';
 import { BigNumber } from "@ethersproject/bignumber";
 import { formatBalance } from "./formatBalance"; 
 import { config } from "./config"; 
@@ -116,7 +117,8 @@ async function main(
     const tokenInDecimals = tokens[tokenSymbolIn.toString()].decimals;
     const tokenOutDecimals = tokens[tokenSymbolOut.toString()].decimals;
     
-    const inputAmount = BigNumber.from(parseUnits(tokenAmount.toString(), tokenInDecimals));
+    const decimalAmount = new Decimal(tokenAmount).toDP(tokenInDecimals, Decimal.ROUND_DOWN).toString();
+    const inputAmount = BigNumber.from(parseUnits(decimalAmount, tokenInDecimals));
 
     // Get the best route for swap
     const route = await fibrous.getBestRoute(
@@ -303,7 +305,8 @@ async function swapExecute(
     const tokenOutAddress = tokens[tokenSymbolOut.toString()].address;
     const tokenInDecimals = tokens[tokenSymbolIn.toString()].decimals;
     
-    const inputAmount = BigNumber.from(parseUnits(tokenAmount.toString(), tokenInDecimals));
+    const decimalAmount = new Decimal(tokenAmount).toDP(tokenInDecimals, Decimal.ROUND_DOWN).toString();
+    const inputAmount = BigNumber.from(parseUnits(decimalAmount, tokenInDecimals));
 
     // Apply the account with private key and account address
     const privateKey = config.privateKey;

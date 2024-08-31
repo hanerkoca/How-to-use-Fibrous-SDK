@@ -7,6 +7,7 @@ If you need to download it, you can check the [Node.js website](https://nodejs.o
 
 Version of node: **v21.1.0**
 Version of npm: **10.2.3**
+Version of starknet: **6.13.0**
 
 For changing the version of npm...
 ```bash
@@ -26,7 +27,12 @@ npm install fibrous-router-sdk
 
 Install the **starknet** library with using terminal...
 ```bash
-npm install starknet
+npm install starknet@6.13.0
+```
+
+Install the **decimal.js** library with using terminal...
+```bash
+npm install decimal.js
 ```
 
 ---
